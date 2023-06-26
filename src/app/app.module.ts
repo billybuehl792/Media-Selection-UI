@@ -7,19 +7,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SelectImageFormComponent } from './select-image-form/select-image-form.component';
 
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SelectImageFormComponent,
+    SelectImageFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    MatDialogModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

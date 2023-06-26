@@ -1,24 +1,41 @@
 <div class="container py-3">
 
-  <div class="row my-3">
-    <div class="col">
-      <label for="imageName" class="form-label">Image Name</label>
-      <input class="form-control form-control-sm" id="imageName" disabled="disabled">
-    </div>
-  </div>
+  <form #frm = "ngForm">
 
-  <div class="row my-3">
-    <div class="col">
-      <label for="imageDescription" class="form-label">Image Description</label>
-      <textarea class="form-control form-control-sm" id="imageDescription" rows="3" disabled="disabled"></textarea>
+    <div class="row">
+      <div class="col">
+        <img src="..." class="img-thumbnail" id="imageSource">
+      </div>
     </div>
-  </div>
 
-  <div class="row my-3">
-    <div class="col">
-      <button class="btn btn-sm btn-outline-primary" (click)="open(imageSelect)">Select Image</button>
+    <div class="row my-3">
+      <div class="col">
+        <label for="imageName" class="form-label">Image Name</label>
+        <input class="form-control form-control-sm" id="imageName" disabled="disabled">
+      </div>
     </div>
-  </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <label for="imageDescription" class="form-label">Image Description</label>
+        <textarea class="form-control form-control-sm" id="imageDescription" rows="3" disabled="disabled"></textarea>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <button class="btn btn-sm btn-outline-primary" (click)="searchImages()">Log Service</button>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col">
+        <button class="btn btn-sm btn-outline-primary" (click)="open(imageSelect)">Select Image</button>
+        <button class="btn btn-sm btn-outline-secondary mx-2" (click)="clearForm()">Remove Image</button>
+      </div>
+    </div>
+
+  </form>
 
 </div>
 
@@ -30,8 +47,10 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
 
-  <div class="modal-body">
-    <p>Modal Body</p>
+  <div class="text-center">
+    <div class="spinner-border m-5" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
-
+  
 </ng-template>
