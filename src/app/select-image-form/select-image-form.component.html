@@ -1,3 +1,5 @@
+
+<!-- Form -->
 <div class="container py-3">
 
   <form #frm = "ngForm">
@@ -39,6 +41,8 @@
 
 </div>
 
+<div class="container" id="imageContainer"></div>
+
 <!-- Modal -->
 <ng-template #imageSelect let-modal>
 
@@ -47,7 +51,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
 
-  <div class="text-center">
+  <div class="text-center" id="spinner">
     <div class="spinner-border m-5" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
