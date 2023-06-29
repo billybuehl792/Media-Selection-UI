@@ -1,0 +1,39 @@
+<ng-template #content let-modal>
+
+  <!-- Modal Header -->
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Select Image</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+
+	<div class="modal-body">
+
+    <!-- Spinner while retrieving images -->
+    <div class="container-fluid text-center" *ngIf="unsplashItems==null">
+      <div class="spinner-border m-5" role="status">
+        <span class="sr-only"></span>
+      </div>      
+    </div>
+
+    <!-- Unsplash Image Gallery -->
+    <div class="container-fluid text-center py-2" *ngIf="unsplashItems">
+      <img *ngFor="let item of unsplashItems"
+      class="modal-image rounded border m-2"
+      src="{{ item.urls.thumb }}" 
+      alt="{{ item.alt_description }}"
+      (click)="passImage(item.id, item.alt_description, item.urls.small)" />
+    </div>
+
+	</div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="passImage('', '', '')">Clear Form</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('Close Button')">Close</button>
+
+  </div>
+
+</ng-template>
+
+<button class="btn btn-sm btn-outline-primary" (click)="open(content)">Select Image</button>

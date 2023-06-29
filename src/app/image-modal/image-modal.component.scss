@@ -1,0 +1,9 @@
+.modal-image {
+    max-width: 28%;
+    transition: transform .3s ease;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: transform .3s ease;
+    }
+}

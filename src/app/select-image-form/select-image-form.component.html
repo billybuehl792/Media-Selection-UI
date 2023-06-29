@@ -1,60 +1,46 @@
 
 <!-- Form -->
-<div class="container py-3">
+<div id="imageSelectBox">
 
-  <form #frm = "ngForm">
+  <div class="container-fluid bg-light rounded border py-3">
 
     <div class="row">
-      <div class="col">
-        <img src="..." class="img-thumbnail" id="imageSource">
+
+      <!-- Image -->
+      <div class="col-12 col-sm-6 text-center p-3">
+          <img class="rounded border" id="featuredImage" src="{{ imageUrl || tempImageUrl }}" />
       </div>
+
+      <!-- Text Input Fields -->
+      <div class="col-12 col-sm-6 d-flex px-5 px-sm-2 align-items-center">
+
+        <div class="row pe-0 pe-sm-4">
+
+          <div class="col-12 my-1">
+            <input class="form-control form-control-sm" id="imageName" name="imageName" disabled="disabled" placeholder="Image Name" value="{{ imageName }}">
+          </div>
+
+          <div class="col-12 my-1">
+            <textarea class="form-control form-control-sm" id="imageDescription" name="imageDescription" rows="4" disabled="disabled" placeholder="Image Description" value="{{ imageDescr }}"></textarea>
+          </div>
+          
+          <!-- Horizontal Rule -->
+          <div>
+            <hr>
+          </div>
+
+          <!-- Control Buttons -->
+          <div class="col-12 text-center">
+            <app-image-modal (notify)="setForm($event)"></app-image-modal>
+            <button class="btn btn-sm btn-outline-secondary mx-1" (click)="clearForm()">Remove Image</button>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="row my-3">
-      <div class="col">
-        <label for="imageName" class="form-label">Image Name</label>
-        <input class="form-control form-control-sm" id="imageName" disabled="disabled">
-      </div>
-    </div>
-
-    <div class="row my-3">
-      <div class="col">
-        <label for="imageDescription" class="form-label">Image Description</label>
-        <textarea class="form-control form-control-sm" id="imageDescription" rows="3" disabled="disabled"></textarea>
-      </div>
-    </div>
-
-    <div class="row my-3">
-      <div class="col">
-        <button class="btn btn-sm btn-outline-primary" (click)="searchImages()">Log Service</button>
-      </div>
-    </div>
-
-    <div class="row my-3">
-      <div class="col">
-        <button class="btn btn-sm btn-outline-primary" (click)="open(imageSelect)">Select Image</button>
-        <button class="btn btn-sm btn-outline-secondary mx-2" (click)="clearForm()">Remove Image</button>
-      </div>
-    </div>
-
-  </form>
+  </div>
 
 </div>
-
-<div class="container" id="imageContainer"></div>
-
-<!-- Modal -->
-<ng-template #imageSelect let-modal>
-
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Select Image</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-
-  <div class="text-center" id="spinner">
-    <div class="spinner-border m-5" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-  </div>
-  
-</ng-template>

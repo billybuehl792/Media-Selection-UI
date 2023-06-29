@@ -8,20 +8,25 @@ import { SelectImageFormComponent } from './select-image-form/select-image-form.
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DragScrollModule } from 'ngx-drag-scroll';
+
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SelectImageFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SelectImageFormComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        FormsModule,
+        HttpClientModule,
+        DragScrollModule,
+        ImageModalComponent
+    ]
 })
 export class AppModule { }
