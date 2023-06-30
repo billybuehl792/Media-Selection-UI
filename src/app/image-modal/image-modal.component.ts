@@ -13,60 +13,32 @@ import { ImageInterface } from '../interfaces/image-interface';
   providers: [ImageSelectionService]
 })
 
-export class ImageModalComponent implements OnInit {
+export class ImageModalComponent {
 
   @Output()
   notify: EventEmitter<ImageInterface> = new EventEmitter<ImageInterface>();
 
   unsplashItems: any;
-  closeResult!: string;
 
   constructor(
     private modalService: NgbModal,
     private imageSelectionService: ImageSelectionService
   ) {}
 
-  ngOnInit(): void {
-
-    // Subscribe to listImages() observable and set res as class variable
-    // this.imageSelectionService.listImages().subscribe((res) => {
-    //   console.log(res);
-    //   this.UnsplashItems = res;
-    // });
-
-  }
-
   // Open Modal
   open(content: any) {
 
     // Open modal and get dismiss reason
-		this.modalService.open(content, { size: 'md', backdrop: 'static'}).result.then(
-      (result) => {
-        this.closeResult = `Closed with: ${result}`;
-      },
-      (reason) => {
-				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-			}
-    );
+		this.modalService.open(content, { size: 'md', backdrop: 'static'});
 
     // Subscribe to listImages() observable and set res as class variable
+    // Subscribe to observable only when 'Select Image' is first pressed
     if (!this.unsplashItems) {
       this.imageSelectionService.listImages().subscribe((res) => {
-        console.log(res);
         this.unsplashItems = res;
       });
     }
 
-	}
-
-  private getDismissReason(reason: any): string {
-		if (reason === ModalDismissReasons.ESC) {
-			return 'by pressing ESC';
-		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-			return 'by clicking on a backdrop';
-		} else {
-			return `with: ${reason}`;
-		}
 	}
 
   // Pass relevant image data to select-image-form.component & close modal
@@ -78,16 +50,12 @@ export class ImageModalComponent implements OnInit {
       imgUrl: imgUrl
     };
 
-    // emit selectedImage to select-image-form.component
+    // Emit selectedImage to select-image-form.component
     this.notify.emit(selectedImage);
 
     // Dismiss modal
     this.modalService.dismissAll("Image Selected");
     
-  }
-  
-  printTest() {
-    console.log('it works!');
   }
 
 }
