@@ -8,7 +8,6 @@ import { SelectImageFormComponent } from './select-image-form/select-image-form.
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DragScrollModule } from 'ngx-drag-scroll';
 
 import { ImageModalComponent } from './image-modal/image-modal.component';
 
@@ -25,7 +24,6 @@ import { ImageModalComponent } from './image-modal/image-modal.component';
         NgbModule,
         FormsModule,
         HttpClientModule,
-        DragScrollModule,
         ImageModalComponent
     ]
 })

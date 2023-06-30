@@ -52,6 +52,7 @@ export class ImageModalComponent implements OnInit {
     // Subscribe to listImages() observable and set res as class variable
     if (!this.unsplashItems) {
       this.imageSelectionService.listImages().subscribe((res) => {
+        console.log(res);
         this.unsplashItems = res;
       });
     }
