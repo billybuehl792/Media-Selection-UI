@@ -12,7 +12,6 @@ export class SelectImageFormComponent {
   imageName = '';
   imageDescr = '';
   imageUrl = '';
-  tempImageUrl = '/assets/images/imagePreview.png';
 
   // Clear input fields & image src
   clearForm() {

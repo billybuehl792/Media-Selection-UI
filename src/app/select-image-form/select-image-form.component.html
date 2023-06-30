@@ -8,7 +8,13 @@
 
       <!-- Image -->
       <div class="col-12 col-sm-6 text-center p-3">
-          <img class="rounded border" id="featuredImage" src="{{ imageUrl || tempImageUrl }}" />
+
+        <img *ngIf="imageUrl; else tempImage" class="rounded border" id="featuredImage" src="{{ imageUrl }}" />
+        
+        <ng-template #tempImage>
+          <img class="rounded border" id="featuredImage" src="assets/images/imagePreview.png" />
+        </ng-template>
+
       </div>
 
       <!-- Text Input Fields -->
