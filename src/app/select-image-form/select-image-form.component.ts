@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImageInterface } from '../interfaces/image-interface';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-select-image-form',
@@ -7,12 +8,23 @@ import { ImageInterface } from '../interfaces/image-interface';
   styleUrls: ['./select-image-form.component.scss'],
 })
 
-export class SelectImageFormComponent {
+export class SelectImageFormComponent implements OnInit {
 
-  imageName = '';
-  imageDescr = '';
   imageUrl = '';
+  imageForm!: FormGroup;
 
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+
+    // Formbuilder controls
+    this.imageForm = this.fb.group({
+      imageName: [{value: '', disabled: true}],
+      imageDescr: [{value: '', disabled: true}]
+    });
+
+  }
+ 
   // Clear input fields & image src
   clearForm() {
     this.setForm({
@@ -22,12 +34,17 @@ export class SelectImageFormComponent {
     });
   }
 
-  // Set input values and & image src
+  // Set input formbuilder values and & imageUrl
   setForm(data: ImageInterface) {
 
-    this.imageName = data.imgName;
-    this.imageDescr = data.imgDescr;
+    // Set imageUrl from modal image select
     this.imageUrl = data.imgUrl;
+
+    // Set values in formbuilder form
+    this.imageForm.setValue({
+      imageName: data.imgName,
+      imageDescr: data.imgDescr
+    })
 
   }
 

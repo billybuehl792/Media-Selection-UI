@@ -17,29 +17,33 @@
 
       </div>
 
-      <!-- Text Input Fields -->
       <div class="col-12 col-sm-6 d-flex px-5 px-sm-2 align-items-center">
 
         <div class="row pe-0 pe-sm-4">
 
-          <div class="col-12 my-1">
-            <input class="form-control form-control-sm" id="imageName" name="imageName" disabled="disabled" placeholder="Image Name" value="{{ imageName }}">
-          </div>
+          <!-- Text Control Form -->
+          <form [formGroup]="imageForm">
+            
+            <div class="col-12 my-1">
+              <input formControlName="imageName" class="form-control form-control-sm" placeholder="Image Name" />
+            </div>
 
-          <div class="col-12 my-1">
-            <textarea class="form-control form-control-sm" id="imageDescription" name="imageDescription" rows="4" disabled="disabled" placeholder="Image Description" value="{{ imageDescr }}"></textarea>
-          </div>
-          
-          <!-- Horizontal Rule -->
-          <div>
-            <hr>
-          </div>
+            <div class="col-12 my-1">
+              <textarea formControlName="imageDescr" class="form-control form-control-sm" rows="4" placeholder="Image Description"></textarea>
+            </div>
+            
+            <!-- Horizontal Rule -->
+            <div>
+              <hr>
+            </div>
 
-          <!-- Control Buttons -->
-          <div class="col-12 text-center">
-            <app-image-modal (notify)="setForm($event)"></app-image-modal>
-            <button class="btn btn-sm btn-outline-secondary m-1" (click)="clearForm()">Remove Image</button>
-          </div>
+            <!-- Control Buttons -->
+            <div class="col-12 text-center">
+              <app-image-modal (notify)="setForm($event)"></app-image-modal>
+              <button class="btn btn-sm btn-outline-secondary m-1" (click)="clearForm()">Remove Image</button>
+            </div>
+
+          </form>
 
         </div>
 

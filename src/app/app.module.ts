@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SelectImageFormComponent } from './select-image-form/select-image-form.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
@@ -21,6 +22,7 @@ import { ImageModalComponent } from './image-modal/image-modal.component';
         AppRoutingModule,
         NgbModule,
         HttpClientModule,
+        ReactiveFormsModule,
         ImageModalComponent
     ]
 })
